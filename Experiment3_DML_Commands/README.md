@@ -47,123 +47,285 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
 --
--- Paste Question 1 here
+-- Update the 'Selling_Price' to add 10% extra margin for all products supplied by the supplier with id 6.
+
+PRODUCTS TABLE
+
+name               type
+-----------------  ---------------
+product_id         INT
+product_name       VARCHAR(100)
+category           VARCHAR(50)
+cost_price         DECIMAL(10,2)
+sell_price         DECIMAL(10,2)
+reorder_lvl        INT
+quantity           INT
+supplier_id        INT
 
 ```sql
--- Paste your SQL code below for Question 1
+-- update products set sell_price=(sell_price+sell_price*0.10) where supplier_id=6
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1187" height="544" alt="image" src="https://github.com/user-attachments/assets/0d6ff306-b31f-4c35-9019-2f54cc49ae9a" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+-- Write a SQL statement to change the first_name column of employees table with 'John' for those employees whose department_id is 80 and gets a commission_pct below 0.35.
+
+Employees table
+
+---------------
+employee_id
+first_name
+last_name
+email
+phone_number
+hire_date
+job_id
+salary
+commission_pct
+manager_id
+department_id
 
 ```sql
--- Paste your SQL code below for Question 2
+-- update Employees set FIRST_NAME="John" where (DEPARTMENT_ID=80 and COMMISSION_PCT<0.35)
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1184" height="527" alt="image" src="https://github.com/user-attachments/assets/cbdc5825-30c1-4801-bcb5-37e214eef4fe" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- Write a SQL statement to change the email column of employees table with 'Unavailable' for all employees in employees table.
+
+Employees table
+
+---------------
+employee_id
+first_name
+last_name
+email
+phone_number
+hire_date
+job_id
+salary
+commission_pct
+manager_id
+department_id
+ 
 
 ```sql
--- Paste your SQL code below for Question 3
+-- UPDATE Employees SET Email="Unavailable" 
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1188" height="428" alt="image" src="https://github.com/user-attachments/assets/a40549ac-3938-40f0-a75b-c79be456a34a" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+-- Write a SQL statement to double the availability of the product with product_id 1.
+
+products table
+
+---------------
+product_id
+product_name
+category_id
+availability
 
 ```sql
--- Paste your SQL code below for Question 4
+-- update products set availability=availability*2 where product_id=1
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1190" height="214" alt="image" src="https://github.com/user-attachments/assets/4c1127ad-c98e-4995-9e07-52eb9fe99131" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+-- Write a SQL query to Delete a Specific Surgery whose ID is 3
+
+Sample table: Surgeries
+
+attributes: surgery_id, patient_id, surgeon_id, surgery_date
 
 ```sql
--- Paste your SQL code below for Question 5
+-- delete FROM Surgeries where surgery_id=3
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1185" height="369" alt="image" src="https://github.com/user-attachments/assets/cfe5510a-a048-4047-ab77-9d73dfcd188f" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+-- Write a SQL query to Delete customers whose 'GRADE' is greater than 2 and have a 'PAYMENT_AMT' less than the average 'PAYMENT_AMT' for all customers, or whose 'OUTSTANDING_AMT' is greater than 8000:
+
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000
 
 ```sql
--- Paste your SQL code below for Question 6
+-- delete FROM Customer where ((GRADE>2 AND PAYMENT_AMT<(SELECT AVG(PAYMENT_AMT) FROM Customer)) OR OUTSTANDING_AMT>8000)
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1189" height="654" alt="Screenshot 2025-11-03 162400" src="https://github.com/user-attachments/assets/c535b308-a1e6-4c16-94fb-56308b995dd2" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- Write a SQL query to Delete customers with 'CUST_COUNTRY' 'UK' and 'WORKING_AREA' 'London' whose 'GRADE' is less than 3
+
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.
 
 ```sql
--- Paste your SQL code below for Question 7
+-- delete FROM Customer where (CUST_COUNTRY="UK" AND WORKING_AREA="London" AND GRADE<3)
 ```
 
 **Output:**
+<img width="1184" height="445" alt="image" src="https://github.com/user-attachments/assets/77cea457-8ec2-4975-84e6-cbcb3b3b77c1" />
 
-![Output7](output.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
+--Write a SQL query to Delete customers from 'customer' table where 'CUST_COUNTRY' is neither 'India' nor 'USA'.
+
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000
 
 ```sql
--- Paste your SQL code below for Question 8
+-- delete from Customer where CUST_COUNTRY<>"India" and CUST_COUNTRY<>"USA" 
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1183" height="534" alt="image" src="https://github.com/user-attachments/assets/d1c7dac2-7ce4-4ff0-a7e9-878a4635d545" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+-- Write a query to fetch 3 top salaried records from EmployeePosition table.
+EmpID
+
+EmpPosition
+
+DateOfJoining
+
+Salary
+
+1
+
+Manager
+
+01/05/2024
+
+500000
+
+2
+
+Executive
+
+02/05/2024
+
+75000
 
 ```sql
--- Paste your SQL code below for Question 9
+-- SELECT * from EmployeePosition ORDER BY Salary DESC Limit 3
 ```
 
 **Output:**
+<img width="1180" height="250" alt="image" src="https://github.com/user-attachments/assets/de203b99-4681-402d-a217-f57c3e4ce0e0" />
 
-![Output9](output.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
+-- Write a query to find the names of employees that begin with ‘S’ from EmployeeInfo table.
+
+EmpID
+
+EmpFname
+
+EmpLname
+
+Department
+
+Project
+
+Address
+
+DOB
+
+Gender
+
+1
+
+Sanjay
+
+Mehra
+
+HR
+
+P1
+
+Hyderabad(HYD)
+
+01/12/1976
+
+M
+
+2
+
+Ananya
+
+Mishra
+
+Admin
+
+P2
+
+Delhi(DEL)
+
+02/05/1968
+
+F
 
 ```sql
--- Paste your SQL code below for Question 10
+-- Select * from Employeeinfo where EmpFname LIKE 'S%'
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1194" height="246" alt="image" src="https://github.com/user-attachments/assets/6601c197-4342-4147-9fab-790782ab727f" />
+
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
